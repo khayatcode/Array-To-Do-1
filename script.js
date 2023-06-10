@@ -19,12 +19,15 @@ function popFront(array){
     return array[0]
 }
 
-console.log(popFront([6, 80,6,2,45]))
+console.log(popFront([6,9, 80,6,2,45]))
 
 // 3) Insert At
 
 function insertAt(arr, index, num){
-    arr.splice(index, 0, num)
+    for(let i = arr.length; i >= index; i--){
+        arr[i] = arr[i-1]
+    }
+    arr[index] = num
     return arr
 }
 
@@ -33,11 +36,16 @@ console.log(insertAt([73,8,291,3], 1, 0))
 // Remove At
 
 function removeAt(arr, index){
-    arr.splice(index,1)
-    return arr
+    const newArray = []
+    for(let i = 0; i < arr.length; i ++){
+        if(i != index){
+            newArray.push(arr[i])
+        }
+    }
+    return newArray
 }
 
-console.log(removeAt([32,91,7,0], 2))
+console.log(removeAt([1000,3,204,77], 1))
 
 // Swap Pairs
 
